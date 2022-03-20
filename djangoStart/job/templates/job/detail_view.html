@@ -1,0 +1,14 @@
+{% extends 'main/layout.html' %}
+
+{% block content %}
+
+    <div class='features'>
+        <h1>{{ job.title }}</h1>
+        <p>{{ job.full_text }}</p>
+        
+    </div>
+    
+
+{% endblock %}
+
+{% block title %} {{job.title}} {% endblock %}
