@@ -2,11 +2,31 @@
 
 {% block content %}
 
-    <div class='features'>
-        <h1>{{ title }}</h1>
-        <p>text</p>
-        <button class="btn btn-warning">about</button>
-    </div>
+<div class='features'>
+    <h1>{{ title }}</h1>
+    {% for el in news %}
+        <div class="alert alert-warning">
+            <a href="{% url 'news_detail' el.id %}">
+            <h3>{{ el.title }}</h3>
+            <p>{{ el.anons }}</p>
+            </a>
+        </div>
+    {% endfor %}
+    <a href="{% url 'news_home' %}"><p><i class="fas fa-address-card"></i> Статьи читать далее</p></a>
+</div>
+
+<div class='features'>
+    <h1>{{ title }}</h1>
+    {% for el in jobs %}
+        <div class="alert alert-warning">
+            <a href="{% url 'job_detail' el.id %}">
+            <h3>{{ el.title }}</h3>
+            <p>{{ el.anons }}</p>
+            </a>
+        </div>
+    {% endfor %}
+    <a href="{% url 'job_home' %}"><p> Вакансии</p></a>
+</div>
 
 {% endblock %}
 
