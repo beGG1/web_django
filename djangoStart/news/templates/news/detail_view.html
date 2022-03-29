@@ -5,9 +5,9 @@
     <div class='features'>
         <h1>{{ article.title }}</h1>
         <p>{{ article.date }}</p>
-        <p>{{ article.full_text }}</p>
+        <p>{{ article.full_text | safe }}</p>
     </div>
-    <div class='features'>
+    <div class='add_comments'>
         <h1>Добавить Комментарии</h1>
         <form method="post">
             {% csrf_token %}
@@ -18,15 +18,17 @@
             <button class="btn btn-success" type="submit">Добавить</button>
         </form>
     </div>
-    <div class="features">
+    <div class="comments">
         <h4>Комментарии</h4>
         {% for comment in comments %}
         Пользователь - {{ comment.name }}<br>
-        {{ comment.body }} <br>
+        {{ comment.body | linebreaks }} <br>
         Добавлен - {{ comment.created }}<br><br>
         {% endfor %}
     </div>
-    
+    <div class='footer'>
+        <p>text</p>
+    </div>    
 
 {% endblock %}
 

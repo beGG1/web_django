@@ -11,6 +11,8 @@
         <h3>Занятость: <i><input type="checkbox" checked="{{ job.full_part_time }}" disabled></i></h3>
         <div class='description'><h2> {{ job.full_text |safe }}</h2></div>
         <h4><i>Вакансия опубликована {{ job.post_date }} в Москве.</i></h4>
+        <button class="btn btn-success" type="submit" onclick="alert('Для совершения этого действия необходимо зарегистрироваться')">Откликнуться на вакансию</button>
+        <button class="btn btn-warning" type="submit" onclick="alert('Для совершения этого действия необходимо зарегистрироваться')">Добавить в избранное</button>
         
     </div>
     <div class='add_comments'>

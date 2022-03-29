@@ -10,17 +10,37 @@
     <link rel="stylesheet" href="{% static 'main/css/main.css' %}">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
 </head>
-<body>
-    <aside>
-        <h3>Навигация</h3>
-        <ul>
-            <a href="{% url 'home' %}"><li><i class="fas fa-home"></i> Главная</li></a>
-            <a href="{% url 'about' %}"><li><i class="fas fa-address-card"></i> Про нас</li></a>
-            <a href="{% url 'news_home' %}"><li><i class="fas fa-address-card"></i> Новости</li></a>
-            <a href="{% url 'job_home' %}"><li> Вакансии</li></a>
-            <a href="{% url 'contact' %}"><li><i class="fas fa-paper-plane"></i> Контакты</li></a>
-        </ul>
-    </aside>
+<body>    
+    <div class="dropdown">
+            <button onclick="myFunction()" class="dropbtn"> Меню</button>
+            <div id="myDropdown" class="dropdown-content">
+               <a href="{% url 'home' %}"><li> Главная</li></a>
+               <a href="{% url 'job_home' %}"><li></i></i> Вакансии</li></a>
+               <a href="{% url 'news_home' %}"><li> Статьи</li></a>
+               <a href="{% url 'about' %}"><li> Про нас</li></a>
+            </div>
+        </div>
+
+
+        <script>
+            /* Когда пользователь нажимает на кнопку, переключаться раскрывает содержимое */
+            function myFunction() {
+               document.getElementById("myDropdown").classList.toggle("show");
+            }
+            // Закрыть раскрывающийся список, если пользователь щелкнет за его пределами.
+            window.onclick = function(event) {
+               if (!event.target.matches('.dropbtn')) {
+                  var dropdowns = document.getElementsByClassName("dropdown");
+                  var i;
+                  for (i = 0; i < dropdowns.length; i++) {
+                      var openDropdown = dropdowns[i];
+                         if (openDropdown.classList.contains('show')) {
+                             openDropdown.classList.remove('show');
+                         }
+                    }
+                }
+            }
+        </script>
     <main>
         {% block content %}
         {% endblock %}
