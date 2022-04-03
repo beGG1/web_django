@@ -51,4 +51,5 @@ class Migration(migrations.Migration):
             name='work_graph',
             field=models.CharField(default='', max_length=20, verbose_name='График работы'),
         ),
+
     ]

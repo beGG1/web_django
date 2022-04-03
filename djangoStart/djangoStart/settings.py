@@ -107,7 +107,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ru'
 
 TIME_ZONE = 'UTC'
 
@@ -127,5 +127,11 @@ STATICFILES_DIRS = [
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
+#from settings import PROJECT_ROOT
+import os
+MEDIA_URL = '/media/' 
+ 
+# Path where media is stored 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/') 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

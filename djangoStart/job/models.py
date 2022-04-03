@@ -14,6 +14,7 @@ class Job(models.Model):
     number_of_ratings = models.BigIntegerField(default=0)
     anons = models.CharField('Анонс', max_length=250)
     full_text = models.TextField('Статья')
+    image = models.ImageField(blank=True, upload_to='job_images/', help_text='150x150px', verbose_name='Ссылка картинки')
 
     def __str__(self):
         return self.title
