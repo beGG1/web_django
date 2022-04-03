@@ -1,6 +1,9 @@
 {% extends 'main/layout.html' %}
 
 {% block content %}
+<div class="header">
+    <h1>INTERSTUD</h1>
+</div>
 
     <div class='features'>
         <h1>{{ job.title }}</h1>
@@ -11,10 +14,13 @@
         <h3>Занятость: <i><input type="checkbox" checked="{{ job.full_part_time }}" disabled></i></h3>
         <div class='description'><h2> {{ job.full_text |safe }}</h2></div>
         <h4><i>Вакансия опубликована {{ job.post_date }} в Москве.</i></h4>
+
+        {% if request.user.is_authenticated %}
         <button class="btn btn-success" type="submit" onclick="alert('Для совершения этого действия необходимо зарегистрироваться')">Откликнуться на вакансию</button>
         <button class="btn btn-warning" type="submit" onclick="alert('Для совершения этого действия необходимо зарегистрироваться')">Добавить в избранное</button>
-        
+        {% endif %}
     </div>
+    {% if request.user.is_authenticated %}
     <div class='add_comments'>
         <h1>Добавить Комментарии</h1>
         <form method="post">
@@ -26,6 +32,7 @@
             <button class="btn btn-success" type="submit">Добавить</button>
         </form>
     </div>
+    {% endif %}
     <div class="comments">
         <h4>Комментарии</h4>
         {% for comment in comments %}

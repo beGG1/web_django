@@ -1,0 +1,19 @@
+{% extends 'main/layout.html' %}
+
+{% block content %}
+
+<div class="header">
+    <h1>INTERSTUD</h1>
+</div>
+
+<div class="features">
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type='submit'> Войти </button>
+</form>
+</div>
+
+{% endblock %}
+
+{% block title %} Register {% endblock %}

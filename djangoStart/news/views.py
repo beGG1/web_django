@@ -3,6 +3,9 @@ from django.views.generic import DeleteView
 from django.contrib import messages
 from .models import Article, Comment
 from .forms import CommentForm
+from django.contrib.auth.models import User
+from account.models import Liked_post
+from django.urls import reverse_lazy
 
 # Create your views here.
 def news_home(request):
@@ -10,16 +13,22 @@ def news_home(request):
     return render(request, 'news/news_home.html', {'news': news})
 
 
-class NewsDetailView(DeleteView):
+'''class NewsDetailView(DeleteView):
     model = Article
     template_name = 'news/detail_view.html'
-    context_object_name = 'article'
+    context_object_name = 'article'''
  
 
 def news_detail(request, pk):
     form = CommentForm()
     news = get_object_or_404(Article, id=pk)
     comments = Comment.objects.filter(post=pk)
+    like = Liked_post()
+
+    if request.method == 'LIKE':
+        like.id_article = news
+        like.id_user = request.user
+        like.save()
 
     if request.method == 'POST':
         f = CommentForm(request.POST)
@@ -29,24 +38,9 @@ def news_detail(request, pk):
             comm.save()
     return render(request, 'news/detail_view.html', {'article': news, 'comments': comments, 'form': form})
 
-
-
-'''def new_single(request, pk):
-    """Вывод полной статьи
-    """
-    new = get_object_or_404(Article, id=pk)
-    comment = Comment.objects.filter(new=pk, moderation=True)
-    if request.method == "POST":
-        form = CommentForm(request.POST)
-        if form.is_valid():
-            form = form.save(commit=False)
-            form.user = request.user
-            form.new = new
-            form.save()
-            return redirect(new_single, pk)
-    else:
-        form = CommentForm()
-    return render(request, "news/new_single.html",
-                  {"new": new,
-                   "comments": comment,
-                   "form": form})'''
+'''def like(request):
+    #like = Liked_post()
+    #like.id_article = article
+    #like.id_user = request.user
+    #like.save()
+    return reverse_lazy('news/detail_view.html')'''
