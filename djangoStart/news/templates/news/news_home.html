@@ -3,7 +3,7 @@
 {% block content %}
 
 <div class="header">
-    <h1>INTERSTUD</h1>
+    <h1><img src="/media/logo.png" , width='40'>      INTERSTUD</h1>
 </div>
 
     <div class='features'>
@@ -11,7 +11,7 @@
         {% for el in news %}
             <div class="alert alert-warning">
                 <a href="{% url 'news_detail' el.id %}">
-                <h3>{{ el.title }}</h3>
+                <h3><strong>{{ el.title }}</strong></strong></h3>
                 <p>{{ el.anons }}</p>
                 </a>
             </div>

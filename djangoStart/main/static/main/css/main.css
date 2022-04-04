@@ -6,6 +6,7 @@
 html,
 body {
     background: #2c3031;
+    background-image: url("333.jpg");
 }
 
 .dropbtn {
@@ -19,14 +20,14 @@ body {
     }
     
 .dropbtn:hover, .dropbtn:focus {
-    background-color: #300b0b;
+    background-color: rgb(11, 136, 130);
     }
     
 .dropdown {
     position: fixed;
     display: inline-block;
     left: 2vw;
-    margin-top: 11vh;
+    margin-top: 13vh;
 
     }
     
@@ -60,38 +61,50 @@ body {
 main .features {
     float: center;
     left: 100px;
-    color: hsl(0, 20%, 98%);
+    color: rgb(164, 165, 163);
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 10px;
     text-align: left;
     width: 65%;
     padding-bottom: 5px;
     height: 100%;
+    font-family: Palatino, URW Palladio L, serif
 }
 main .features h3 {text-align: center;}
-main .features p {font-size: 20px;}
-main .features h1 {text-align: center;}
-main .features h2 {text-align: center;}
+main .features h1 {color: rgb(11, 136, 130); text-align: center; font-size: 40px;}
+main .features b {color:rgb(247, 253, 252); font-weight: 300;}
+main .features h2 {text-align: center; font-size: 30px; margin: 20px auto 20px}
+main .features p {font-size: 25px;}
+main .features ul {font-size: 25px;}
+main .features ol {font-size: 25px;}
+main .features br {font-size: 25px; margin: 30px 0;}
+main .features i {font-size: 27px;}
 
+main .imagejob
+{
+    margin-top: 25px;
+    border-radius: 10px 20px;
+    border: 4px solid #00a8e1;
+    transition: 1s;
+}
+.imagejob:hover {
+    transform: scale(1.1); /* Увеличиваем масштаб */
+   }
 
-main .header{
+main .header {
     display: inline-block;
     position: relative;
-    padding-top: 20px;
-    height: 20%; 
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+    min-height: 10%;
     border-bottom: 5px solid rgb(16, 138, 132);
     text-align: center;
     font-size: 55px;
     color: #fff;
     width: 100%;
     background-color: #222222;
-
-
 }
-
-main .features h1 {font-size: 40px;}
-main .features h2 {font-size: 30px; margin: 20px auto 20px}
-main .features p {max-width: 600px; margin: 20px auto}
 
 #job_tablet
 {
@@ -101,8 +114,8 @@ main .features p {max-width: 600px; margin: 20px auto}
     width: 80%;
     margin: 20px auto;
     text-align: center;
-    padding-bottom: 50px;
-    background-color: rgb(141, 151, 207);
+    padding-bottom: 10px;
+    background-color: rgb(149, 150, 153);
 }
 .alert-warning {
     color: #fff;
@@ -111,8 +124,8 @@ main .features p {max-width: 600px; margin: 20px auto}
     width: 80%;
     margin: 20px auto;
     text-align: center;
-    padding-bottom: 50px;
-    background-color: rgb(182, 207, 126);
+    padding-bottom: 10px;
+    background-color: rgb(197, 207, 175);
 }
 
 a:hover, a:visited, a:link, a:active
@@ -147,6 +160,18 @@ main .add_comments{
     color: #fff;
 }
 
+.add_comments f{
+    max-height: 10%;
+}
+.features .add_com {
+    width: 500px;
+    margin: 0 auto;
+}
+
+.comments b {
+    color: rgb(11, 136, 130);
+}
+
  .comments{
     position: relative;
     margin-left: auto;
@@ -173,8 +198,21 @@ main .add_comments{
     padding: 1rem;
     margin: auto;
     border-radius: 5px;
+    scrollbar-width: none;
   }
-  
+
+  .section::-webkit-scrollbar { 
+    width: 12px;
+    /*height: 0;*/
+}
+    .section::-webkit-scrollbar-track {
+        background: rgb(149, 150, 153); /* цвет дорожки */
+    }
+    .section::-webkit-scrollbar-thumb {
+        background-color: rgb(11, 136, 130); /* цвет плашки */
+        border-radius: 20px; /* закругления плашки */
+        border: 3px solid rgb(149, 150, 153);
+    }
   .section__item1 {
     display: flex;
     justify-content: center;
@@ -183,7 +221,7 @@ main .add_comments{
     width: 350px;
     height: 200px;
     scroll-snap-align: start;
-    background-color: rgb(228, 248, 180);
+    background-color: rgb(149, 150, 153);
     color:#000;
     border-radius: 5px;
     text-align: center;
@@ -197,7 +235,7 @@ main .add_comments{
     width: 350px;
     height: 200px;
     scroll-snap-align: start;
-    background-color: rgb(192, 215, 247);
+    background-color: rgb(197, 207, 175);
     color:#000;
     border-radius: 5px;
     text-align: center;
@@ -225,29 +263,31 @@ main .add_comments{
 
 .button {
     position: relative;
-    display: inline-block;
+    display: flex;
+    justify-content:center;
+
     padding: 0px 5px 6px;
     margin: 20px 20px;
-    margin-bottom: 20px;
-    left: 44.5vw;
+    left:48%;
+    transform: translate(-49%,0);
     top: 10px;
-    margin-bottom: 10px;
-    width: 150px; 
+    margin-bottom: 5px;
+    width: 150px;
     height: 50px;
     text-align: center;
-    line-height: 60px;
+    line-height: 50px;
     font-size: 18px;
     color: rgb(255, 255, 255);
     font-family: sans-serif;
     box-sizing: border-box;
-    background: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);;
+    background: rgb(11, 136, 130);
     background-size: 400%;
     border-radius: 30px;
     z-index: 1;
-  }
+}
    
   .button:hover {
-    animation: animate 8s linear infinite;
+    animation: animate 16s linear infinite;
   }
    
   @keyframes animate {
@@ -258,8 +298,8 @@ main .add_comments{
       background-position: 400%;
     }
   }
-   
-  .button:before {
+
+.button:before {
     content: "";
     position: absolute;
     top: -5px;
@@ -267,16 +307,16 @@ main .add_comments{
     bottom: -5px;
     left: -5px;
     z-index: -1;
-    background: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);;
+    background: linear-gradient(90deg, #FEFFFF, #A7CECC);
     background-size: 400%;
     border-radius: 40px;
     opacity: 0;
     transition: .5s;
-  }
+}
    
   .button:hover:before {
     filter: blur(20px);
     opacity: 1;
-    animation: animate 8s linear infinite;
+    animation: animate 16s linear infinite;
   }
 

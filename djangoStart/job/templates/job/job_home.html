@@ -2,20 +2,22 @@
 
 {% block content %}
 <div class="header">
-    <h1>INTERSTUD</h1>
+    <h1><img src="/media/logo.png" , width='40'>      INTERSTUD</h1>
 </div>
 
-    <div class='features'>
-        <h1>{{ title }}</h1>
-        {% for el in jobs %}
-            <div class="alert alert-warning" id="job_tablet">
-                <a href="{% url 'job_detail' el.id %}">
-                <h3>{{ el.title }}</h3>
-                <p>{{ el.anons }}</p>
-                </a>
-            </div>
-        {% endfor %}
+
+<div class='features'>
+
+    <h1>{{ title }}</h1>
+    {% for el in jobs %}
+    <div class="alert alert-warning" id="job_tablet">
+        <a href="{% url 'job_detail' el.id %}">
+            <h3><strong>{{ el.title }}</strong></h3>
+            <p>{{ el.anons }}</p>
+        </a>
     </div>
+    {% endfor %}
+</div>
 
 {% endblock %}
 

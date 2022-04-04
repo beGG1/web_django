@@ -3,40 +3,42 @@
 {% block content %}
 
 <div class="header">
-    <h1>INTERSTUD</h1>
+    <h1><img src="/media/logo.png" , width='40'>      INTERSTUD</h1>
 </div>
 
-    <div class='features'>
-        <h1>{{ article.title }}</h1>
-        <p>{{ article.date }}</p>
-        <p>{{ article.full_text | safe }}</p>
-    </div>
+<div class='features'>
+    <h1>{{ article.title }}</h1>
+    <br><p>{{ article.full_text | safe }}</p>
+    <br><h4><i>Статья опубликована {{ article.date }}.</i></h4>
 
 
     {% if request.user.is_authenticated %}
-    <div class='add_comments'>
-        <h1>Добавить Комментарии</h1>
-        <form method="post">
-            {% csrf_token %}
-            {{ form.name }}<br>
-            {{ form.email }}<br>
-            {{ form.body }}<br>
-            
-            <button class="btn btn-success" type="submit">Добавить</button>
-        </form>
-    </div>
+
+    <br><br><h1>Добавить комментарии</h1>
+    <form class="add_com" method="post">
+        {% csrf_token %}
+        <f>{{ form.name }}<br></f>
+        <f>{{ form.email }}<br></f>
+        <f>{{ form.body }}<br></f>
+
+        <button class="btn btn-success" type="submit">Добавить</button>
+    </form>
+
     {% endif %}
-    <div class="comments">
-        <h4>Комментарии</h4>
-        {% for comment in comments %}
-        Пользователь - {{ comment.name }}<br>
-        {{ comment.body | linebreaks }} <br>
-        Добавлен - {{ comment.created }}<br><br>
-        {% endfor %}
-    </div>
-    <div class='footer'>
-        <p>text</p>
-    </div>    
+</div>
+<div class="comments">
+    <h4>Комментарии</h4>
+    <br>
+    {% for comment in comments %}
+    <b>Пользователь - {{ comment.name }}</b><br>
+    {{ comment.body }} <br>
+    <i>Добавлен - {{ comment.created }}</i><br><br>
+    {% endfor %}
+</div>
+<div class='footer'>
+    <br><p>Контакты</p>
+    <p>aa195aivt@gmail.com</p>
+</div>
 
 {% endblock %}
 
