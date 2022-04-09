@@ -11,7 +11,8 @@ class CommentForm(ModelForm):
 
             "name": TextInput(attrs={
                 'class': 'form-control',
-                'placeholder': 'Имя'
+                'placeholder': 'Имя',
+                'style': 'width: 600px;'
         }),
 
             "email": TextInput(attrs={
@@ -20,6 +21,7 @@ class CommentForm(ModelForm):
             }),
             "body": Textarea(attrs={
                 'class': 'form-control',
-                'placeholder': 'text'
+                'placeholder': 'Комментарий',
+                'style': 'height:90px; margin-top:1%;  width: 600px;'
             })
         }

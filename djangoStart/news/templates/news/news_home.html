@@ -2,16 +2,12 @@
 
 {% block content %}
 
-<div class="header">
-    <h1><img src="/media/logo.png" , width='40'>      INTERSTUD</h1>
-</div>
-
-    <div class='features'>
-        <h1>{{ title }}</h1>
+    <div class='bl12 blocks'>
+        <h1>Статьи</h1>
         {% for el in news %}
             <div class="alert alert-warning">
                 <a href="{% url 'news_detail' el.id %}">
-                <h3><strong>{{ el.title }}</strong></strong></h3>
+                <h3>{{ el.title }}</h3>
                 <p>{{ el.anons }}</p>
                 </a>
             </div>

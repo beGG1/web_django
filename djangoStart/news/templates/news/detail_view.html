@@ -2,43 +2,42 @@
 
 {% block content %}
 
-<div class="header">
-    <h1><img src="/media/logo.png" , width='40'>      INTERSTUD</h1>
-</div>
 
-<div class='features'>
+<div class="bl8 blocks">
+  <div class='article'>
+
     <h1>{{ article.title }}</h1>
-    <br><p>{{ article.full_text | safe }}</p>
-    <br><h4><i>Статья опубликована {{ article.date }}.</i></h4>
-
+    <p>{{ article.full_text | safe }}</p>
+    <h2>Статья опубликована {{ article.date }}.</h2>
 
     {% if request.user.is_authenticated %}
 
-    <br><br><h1>Добавить комментарии</h1>
-    <form class="add_com" method="post">
+    <form method="post">
+        <h3>Добавить комментарии</h3>
         {% csrf_token %}
-        <f>{{ form.name }}<br></f>
-        <f>{{ form.email }}<br></f>
-        <f>{{ form.body }}<br></f>
-
-        <button class="btn btn-success" type="submit">Добавить</button>
+        <f>{{ form.name }}</f>
+        <f>{{ form.email }}</f>
+        <f>{{ form.body }}</f>
+        <button class="button_dop" type="submit">Добавить</button>
     </form>
 
     {% endif %}
-</div>
-<div class="comments">
-    <h4>Комментарии</h4>
-    <br>
+
+  </div>
+  <div class="comments">
+    <h1>Комментарии</h1>
     {% for comment in comments %}
+    <div class="com">
     <b>Пользователь - {{ comment.name }}</b><br>
     {{ comment.body }} <br>
     <i>Добавлен - {{ comment.created }}</i><br><br>
+    </div>
     {% endfor %}
+  </div>
+
 </div>
-<div class='footer'>
-    <br><p>Контакты</p>
-    <p>aa195aivt@gmail.com</p>
-</div>
+
+
 
 {% endblock %}
 

@@ -2,15 +2,11 @@
 
 {% block content %}
 
-<div class="header">
-    <h1><img src="/media/logo.png" , width='40'>      INTERSTUD</h1>
-</div>
-
-<div class="features">
+<div class="bl13 blocks">
     <form method="POST">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type='submit'>Регистрация</button>
+        <button class="btn3 button_dop" type='submit'>Регистрация</button>
 </form>
 </div>
 

@@ -1,69 +1,67 @@
 {% extends 'main/layout.html' %}
 
 {% block content %}
-<div class="header">
-    <h1><img src="/media/logo.png" , width='40'>      INTERSTUD</h1>
-</div>
 
-<div class='features'>
-    <h1>{{ job.title }}</h1>
-    <h2><b>Специализация:</b> {{ job.specialty }}</h2>
-    <h3>от <b>{{ job.salary }}</b> руб. до вычета налогов</h3>
-    <h3><b>✓ {{ job.company }}</b></h3>
-    <h3>График работы: <i>{{ job.work_graph }}</i></h3>
-    <script>
+    <div class="bl10 blocks">
+       <h1>{{ job.title }}</h1>
+       <h2><b>Специализация:</b> {{ job.specialty }}</h2>
+       <h3>от <b>{{ job.salary }}</b> руб. до вычета налогов</h3>
+       <h3><b>✓ {{ job.company }}</b></h3>
+       <h3>График работы: <i>{{ job.work_graph }}</i></h3>
+       <script>
             var a = "{{ job.full_part_time }}";
             if (a=="True")
             {
-                document.write ('<span style="font-size: 25px; color: rgb(167, 218, 239); display: block; text-align: center">' + "Полная занятость" + '</span>');
+                document.write ('<span style="font-size: 25px; color: black; display: block; text-align: left">' + "Полная занятость" + '</span>');
             }
             else
             {
                 document.write ('<span style="font-size: 25px; color: rgb(167, 218, 239); display: block; text-align: center">' + "Неполная занятость" + '</span>');
             }
-    </script>
+       </script>
 
-    {% if job.image %}
-    <center>
-        <img class="imagejob" src="{{ MEDIA_URL }}{{ job.image.url }}" , width="450">
-    </center>
-    {% endif %}
-    {{ job.full_text |safe }}
-    <h4><i>Вакансия опубликована {{ job.post_date }} в Москве.</i></h4>
+      <!-- {% if job.image %}
+       <center>
+          <img class="imagejob" src="{{ MEDIA_URL }}{{ job.image.url }}" , width="450">
+       </center>
+       {% endif %}-->
+       </div>
+       <div class="bl9 blocks">
+           <div style="margin: 3% 19% 5% 10%; font-weight: 500;">{{ job.full_text |safe }}
+           <h4 style="font-size: 18px;"><i>Вакансия опубликована {{ job.post_date }} в Москве.</i></h4>
+        </div>
+        </div>
 
-    <!--
-    {% if request.user.is_authenticated %}
+       
+
+       <!--
+       {% if request.user.is_authenticated %}
             <button class="btn btn-success" type="submit" onclick="alert('Для совершения этого действия необходимо зарегистрироваться')">Откликнуться на вакансию</button>
             <button class="btn btn-warning" type="submit" onclick="alert('Для совершения этого действия необходимо зарегистрироваться')">Добавить в избранное</button>
             {% endif %} >
-            -->
-    {% if request.user.is_authenticated %}
-
-    <br><br><h1>Добавить комментарии</h1>
-    <form class="add_com" method="post">
-        {% csrf_token %}
-        <f>{{ form.name }}<br></f>
-        <f>{{ form.email }}<br></f>
-        <f>{{ form.body }}<br></f>
-
-        <button class="btn btn-success" type="submit">Добавить</button>
-    </form>
-
-    {% endif %}
-</div>
+        -->
+       {% if request.user.is_authenticated %}
+           <form class="bl11 blocks" method="post">
+              <h3>Добавить комментарии</h3>
+              {% csrf_token %}
+              <f>{{ form.name }}</f>
+              <f>{{ form.email }}</f>
+              <f>{{ form.body }}</f>
+              <button class="btn2 button_dop" type="submit">Добавить</button>
+            </form>
+       {% endif %}   
+    </div>
     <div class="comments">
-        <h4>Комментарии</h4>
-        <br>
+        <h1>Комментарии</h1>
         {% for comment in comments %}
-        <b>Пользователь - {{ comment.name }}</b><br>
-        {{ comment.body }} <br>
-        <i>Добавлен - {{ comment.created }}</i><br><br>
+            <div class="com">
+              <b>Пользователь - {{ comment.name }}</b><br>
+              {{ comment.body }} <br>
+              <i>Добавлен - {{ comment.created }}</i><br><br>
+            </div>
         {% endfor %}
     </div>
-    <div class='footer'>
-        <br><p>Контакты</p>
-        <p>aa195aivt@gmail.com</p>
-    </div>
+
 
 {% endblock %}
 

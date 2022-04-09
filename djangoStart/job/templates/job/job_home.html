@@ -1,24 +1,18 @@
 {% extends 'main/layout.html' %}
 
 {% block content %}
-<div class="header">
-    <h1><img src="/media/logo.png" , width='40'>      INTERSTUD</h1>
-</div>
 
-
-<div class='features'>
-
-    <h1>{{ title }}</h1>
+<div class='bl12 blocks'>
+    <h1>Вакансии</h1>
     {% for el in jobs %}
-    <div class="alert alert-warning" id="job_tablet">
-        <a href="{% url 'job_detail' el.id %}">
-            <h3><strong>{{ el.title }}</strong></h3>
+        <div class="alert alert-warning">
+            <a href="{% url 'job_detail' el.id %}">
+            <h3>{{ el.title }}</h3>
             <p>{{ el.anons }}</p>
-        </a>
-    </div>
+            </a>
+        </div>
     {% endfor %}
 </div>
-
 {% endblock %}
 
 {% block title %} Job {% endblock %}

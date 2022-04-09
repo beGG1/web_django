@@ -11,48 +11,46 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
 </head>
 <body>    
-
-    <div class="dropdown">
-            <button onclick="myFunction()" class="dropbtn"> Меню</button>
-            <div id="myDropdown" class="dropdown-content">
-               <a href="{% url 'home' %}"><li> Главная</li></a>
-               <a href="{% url 'job_home' %}"><li></i></i> Вакансии</li></a>
-               <a href="{% url 'news_home' %}"><li> Статьи</li></a>
-               <a href="{% url 'about' %}"><li> Про нас</li></a>
-               {% if request.user.is_authenticated %}
-               <a href="{% url 'logout' %}"><li>Выйти</li></a>
-               <!--<a href="{% url 'liked' %}"><li>Избранное</li></a>-->
-               {% else %}
-               <a href="{% url 'register' %}"><li> Регистрация </li></a>
-               <a href="{% url 'login' %}"><li> Войти</li></a>
-               {% endif %}
-            </div>
+    <div class="siteWrapper">
+    <div class="header">
+        <div class="logo">
+            <h1><img src="/media/header/logo.png" , width='30'>      INTERSTUD</h1>
         </div>
+        <div class="menu">
+            <ul>
+           <li><a href="{% url 'home' %}">Главная</a></li>
+           <li><a href="{% url 'job_home' %}">Вакансии</a></li>
+           <li><a href="{% url 'news_home' %}">Статьи</a></li>
+           <li><a href="#">Практика</a></li>
+           <li><a href="{% url 'about' %}">Про<spand style="color:white;">_</spand>нас</a></li>
+           <!--<a href="{% url 'register' %}"><li> Регистрация </li></a>-->
+        </ul>
+        </div>
+        <div class="bokmenu menu" >
+        {% if request.user.is_authenticated %}
+        <li><a style="padding: 16px; margin: 0 auto 0;" href="#"><img src="/media/header/lk.jpg" , width='23', top="0px">  Личный кабинет</a>
+            <ul class="submenu" style="float:right">
+                <li><a style="background-color: #e2e2e2;" href="{% url 'liked' %}">Избранное</a></li>
+                <li><a style="background-color: #e2e2e2;" href="{% url 'logout' %}">Выйти</a></li>
+            </ul>
+        </li>
+        {% else %}
+        <li><a href="{% url 'login' %}">Войти</a></li>
+        {% endif %}
+        </div>
+    </div>
 
+   
 
-        <script>
-            /* Когда пользователь нажимает на кнопку, переключаться раскрывает содержимое */
-            function myFunction() {
-               document.getElementById("myDropdown").classList.toggle("show");
-            }
-            // Закрыть раскрывающийся список, если пользователь щелкнет за его пределами.
-            window.onclick = function(event) {
-               if (!event.target.matches('.dropbtn')) {
-                  var dropdowns = document.getElementsByClassName("dropdown");
-                  var i;
-                  for (i = 0; i < dropdowns.length; i++) {
-                      var openDropdown = dropdowns[i];
-                         if (openDropdown.classList.contains('show')) {
-                             openDropdown.classList.remove('show');
-                         }
-                    }
-                }
-            }
-        </script>
     <main>
         {% block content %}
         {% endblock %}
     </main>
     
+    <div class="footer">
+        <br><p>Контакты</p>
+        <p>aa195aivt@gmail.com</p>
+    </div>
+</div>
 </body>
 </html>
