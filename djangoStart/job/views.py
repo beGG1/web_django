@@ -1,7 +1,8 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import DeleteView
 from .models import Job, Comment_job
 from .forms import CommentForm
+from account.models import Liked_job
 
 # Create your views here.
 def job_home(request):
@@ -27,3 +28,22 @@ def job_detail(request, pk):
             comm.post = job
             comm.save()
     return render(request, 'job/detail_view.html', {'job': job, 'comments': comments, 'form': form})
+
+
+def like(request, pk):
+    print('like')
+    job = get_object_or_404(Job, id=pk)
+    print(Liked_job(id_user=request.user, id_job=job))
+    if Liked_job(id_user=request.user, id_job=job) is not None:
+        print('jopa')
+        l = Liked_job(id_user=request.user, id_job=job)
+        l.save()
+    
+    return redirect('home')
+
+def unlike(request, pk):
+    job = get_object_or_404(Job, id=pk)
+    
+    Liked_job.objects.filter(id_user=request.user, id_job=job).delete()
+    
+    return redirect('home')

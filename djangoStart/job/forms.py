@@ -15,10 +15,6 @@ class CommentForm(ModelForm):
                 'style': 'width: 600px;'
         }),
 
-            "email": TextInput(attrs={
-                'class': 'form-control',
-                'placeholder': 'email'
-            }),
             "body": Textarea(attrs={
                 'class': 'form-control',
                 'placeholder': 'Комментарий',
