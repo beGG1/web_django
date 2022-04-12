@@ -1,5 +1,5 @@
 from .models import Comment_job
-from django.forms import ModelForm, Textarea, TextInput
+from django.forms import ModelForm, Textarea, TextInput, IntegerField, Form
 
 
 class CommentForm(ModelForm):
@@ -21,3 +21,6 @@ class CommentForm(ModelForm):
                 'style': 'height:90px; margin-top:1%;  width: 600px;'
             })
         }
+class JobFilterForm(Form):
+    min_price=IntegerField(label="от", required=False)
+    max_price=IntegerField(label="до", required=False)

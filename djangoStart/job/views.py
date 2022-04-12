@@ -1,8 +1,9 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import DeleteView
 from .models import Job, Comment_job
-from .forms import CommentForm
+from .forms import CommentForm, JobFilterForm
 from account.models import Liked_job
+
 
 # Create your views here.
 def job_home(request):
@@ -47,3 +48,13 @@ def unlike(request, pk):
     Liked_job.objects.filter(id_user=request.user, id_job=job).delete()
     
     return redirect('home')
+
+def job_home(request):
+    jobs = Job.objects.all()
+    form=JobFilterForm(request.GET)
+    if form.is_valid():
+        if form.cleaned_data["min_price"]:
+            jobs=jobs.filter(salary__gte=form.cleaned_data["min_price"])
+        if form.cleaned_data["max_price"]:
+            jobs=jobs.filter(salary__lte=form.cleaned_data["max_price"])
+    return render(request, 'job/job_home.html', {'jobs': jobs,"form":form})
