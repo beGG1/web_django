@@ -54,7 +54,7 @@
     </div>
     <div class="comments">
         <h1>Комментарии</h1>
-        {% for comment in comments %}
+        {% for comment in comments reversed %}
             <div class="com">
               <b>Пользователь - {{ comment.name }}</b><br>
               {{ comment.body }} <br>

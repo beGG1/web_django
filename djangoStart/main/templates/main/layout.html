@@ -12,33 +12,41 @@
 </head>
 <body>    
     <div class="siteWrapper">
-    <div class="header">
-        <div class="logo">
-            <h1><img src="/media/header/logo.png" , width='30'>      INTERSTUD</h1>
+        <div class="header">
+            <div class="logo">
+                <h1><img src="/media/header/logo.png" , width='30'>      INTERSTUD</h1>
+            </div>
+            <div class="menu">
+                <ul>
+                    <li><a href="{% url 'home' %}">Главная</a></li>
+                    <li><a href="{% url 'job_home' %}">Вакансии</a></li>
+                    <li><a href="{% url 'news_home' %}">Статьи</a></li>
+                    <li><a href="#">Практика</a></li>
+                    <li><a href="{% url 'about' %}">Про<spand style="color:white;">_</spand>нас</a></li>
+                    <!--<a href="{% url 'register' %}"><li> Регистрация </li></a>-->
+                </ul>
+
+            </div>
+            <div class="bokmenu menu">
+                {% if request.user.is_authenticated %}
+                <li>
+                    <a style="padding: 16px; margin: 0 auto 0;" href="#"><img src="/media/header/lk.jpg" , width='23' , top="0px">  Личный кабинет</a>
+                    <ul class="submenu" style="float:right">
+                        <li><a style="background-color: #e2e2e2;" href="{% url 'liked' %}">Избранное</a></li>
+                        <li><a style="background-color: #e2e2e2;" href="{% url 'logout' %}">Выйти</a></li>
+                    </ul>
+                </li>
+                {% else %}
+                <li><a href="{% url 'login' %}">Войти</a></li>
+                {% endif %}
+            </div>
+            <div>
+                <form action="{% url 'find' %}" method="get">
+                    {{ form4.as_p }}
+                    <input type="submit" value="Поиск">
+                </form>
+            </div>
         </div>
-        <div class="menu">
-            <ul>
-           <li><a href="{% url 'home' %}">Главная</a></li>
-           <li><a href="{% url 'job_home' %}">Вакансии</a></li>
-           <li><a href="{% url 'news_home' %}">Статьи</a></li>
-           <li><a href="#">Практика</a></li>
-           <li><a href="{% url 'about' %}">Про<spand style="color:white;">_</spand>нас</a></li>
-           <!--<a href="{% url 'register' %}"><li> Регистрация </li></a>-->
-        </ul>
-        </div>
-        <div class="bokmenu menu" >
-        {% if request.user.is_authenticated %}
-        <li><a style="padding: 16px; margin: 0 auto 0;" href="#"><img src="/media/header/lk.jpg" , width='23', top="0px">  Личный кабинет</a>
-            <ul class="submenu" style="float:right">
-                <li><a style="background-color: #e2e2e2;" href="{% url 'liked' %}">Избранное</a></li>
-                <li><a style="background-color: #e2e2e2;" href="{% url 'logout' %}">Выйти</a></li>
-            </ul>
-        </li>
-        {% else %}
-        <li><a href="{% url 'login' %}">Войти</a></li>
-        {% endif %}
-        </div>
-    </div>
 
    
 

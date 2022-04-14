@@ -1,6 +1,10 @@
 from .models import Comment
 from django.forms import ModelForm, Textarea, TextInput
 from account.models import Liked_post
+from django import forms
+
+class ArticleFilterForm(forms.Form):
+    find=forms.CharField(label="Поиск", required=False)
 
 
 class CommentForm(ModelForm):

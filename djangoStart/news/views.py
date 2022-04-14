@@ -6,11 +6,21 @@ from .forms import CommentForm
 from django.contrib.auth.models import User
 from account.models import Liked_post
 from django.urls import reverse_lazy
+from .forms import ArticleFilterForm
+from main.forms import Find
+
 
 # Create your views here.
+
+
 def news_home(request):
     news = Article.objects.all()
-    return render(request, 'news/news_home.html', {'news': news})
+    form=ArticleFilterForm(request.GET)
+    form4=Find(request.GET)
+    if form.is_valid():
+        if form.cleaned_data["find"]:
+            news=news.filter(full_text__icontains=form.cleaned_data["find"])
+    return render(request, 'news/news_home.html', {'news': news, "form":form,"form4":form4})
 
 
 '''class NewsDetailView(DeleteView):
@@ -33,7 +43,7 @@ def news_detail(request, pk):
 
 def like(request, pk):
     news = get_object_or_404(Article, id=pk)
-    if Liked_post(id_user=request.user, id_article=news) is not None:
+    if Liked_post.objects.filter(id_user=request.user, id_article=news).count() == 0:
         l = Liked_post(id_user=request.user, id_article=news)
         l.save()
     

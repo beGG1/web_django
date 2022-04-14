@@ -3,22 +3,35 @@
 {% block content %}
 
 <div class='bl12 blocks'>
- 
+
+
+    <div>
         <form action="" method="get">
-            {{ form.as_p }}
+            {{ form5.as_p }}
             <input type="submit" value="Поиск">
         </form>
+    </div>
+
+
+    <h1>Вакансии</h1>
+    {% for el in jobs %}
+    <div class="alert alert-warning">
+        <a href="{% url 'job_detail' el.id %}">
+            <h3>{{ el.title}}</h3>
+            <p>{{ el.anons }}</p>
+        </a>
+    </div>
+    {% endfor %}
     <h1>Статьи</h1>
     {% for el in news %}
     <div class="alert alert-warning">
         <a href="{% url 'news_detail' el.id %}">
-            <h3>{{ el.title }}</h3>
+            <h3>{{ el.title}}</h3>
             <p>{{ el.anons }}</p>
         </a>
     </div>
     {% endfor %}
 </div>
-
 {% endblock %}
 
-{% block title %} News {% endblock %}
+{% block title %} Job {% endblock %}
