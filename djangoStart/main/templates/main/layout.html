@@ -14,37 +14,36 @@
     <div class="siteWrapper">
         <div class="header">
             <div class="logo">
-                <h1><img src="/media/header/logo.png" , width='30'>      INTERSTUD</h1>
+                <h1><img src="/media/header/logo.png" , width='33vw'>      INTERSTUD</h1>
             </div>
             <div class="menu">
                 <ul>
                     <li><a href="{% url 'home' %}">Главная</a></li>
                     <li><a href="{% url 'job_home' %}">Вакансии</a></li>
                     <li><a href="{% url 'news_home' %}">Статьи</a></li>
-                    <li><a href="#">Практика</a></li>
-                    <li><a href="{% url 'about' %}">Про<spand style="color:white;">_</spand>нас</a></li>
-                    <!--<a href="{% url 'register' %}"><li> Регистрация </li></a>-->
+                    <!--<li><a href="#">Практика</a></li>-->
+                    <li><a href="{% url 'about' %}">Про<spand style="opacity:0%">_</spand>нас</a></li>
                 </ul>
 
             </div>
             <div class="bokmenu menu">
                 {% if request.user.is_authenticated %}
-                <li>
-                    <a style="padding: 16px; margin: 0 auto 0;" href="#"><img src="/media/header/lk.jpg" , width='23' , top="0px">  Личный кабинет</a>
-                    <ul class="submenu" style="float:right">
-                        <li><a style="background-color: #e2e2e2;" href="{% url 'liked' %}">Избранное</a></li>
-                        <li><a style="background-color: #e2e2e2;" href="{% url 'logout' %}">Выйти</a></li>
+                    <ul>
+                        <li><a href="{% url 'liked' %}">Избранное</a></li>
+                        <li><a href="{% url 'logout' %}">Выйти</a></li>
                     </ul>
-                </li>
+                
                 {% else %}
-                <li><a href="{% url 'login' %}">Войти</a></li>
+                <ul>                
+                    <li><a href="{% url 'login' %}">Войти</a></li>
+                </ul>
                 {% endif %}
             </div>
-            <div>
-                <form action="{% url 'find' %}" method="get">
-                    {{ form4.as_p }}
-                    <input type="submit" value="Поиск">
-                </form>
+            <div class="bl_poisk">
+                <form style="display: inline-flex; width:90%;" action="{% url 'find' %}" method="get">
+                    <p>{{form4.as_p }}</p> 
+                     <input type="image" src="/media/index/poisk.png"  width="25" height="25" alt="" style="margin: 1%">
+                    </form>
             </div>
         </div>
 

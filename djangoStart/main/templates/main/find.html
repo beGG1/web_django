@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<div class='bl12 blocks'>
+<div class='bl_vac_list'>
 
 
     <div>
@@ -15,16 +15,18 @@
 
     <h1>Вакансии</h1>
     {% for el in jobs %}
-    <div class="alert alert-warning">
+    <div class="bl12">
         <a href="{% url 'job_detail' el.id %}">
             <h3>{{ el.title}}</h3>
             <p>{{ el.anons }}</p>
         </a>
     </div>
     {% endfor %}
+</div>
+<div class="bl_art_list">
     <h1>Статьи</h1>
     {% for el in news %}
-    <div class="alert alert-warning">
+    <div class="bl11">
         <a href="{% url 'news_detail' el.id %}">
             <h3>{{ el.title}}</h3>
             <p>{{ el.anons }}</p>

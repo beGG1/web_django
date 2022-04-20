@@ -9,17 +9,17 @@ class JobFilterForm(forms.Form):
     max_price=forms.IntegerField(label="до", required=False, validators=[MinValueValidator(0)])
 
 class JobFilterFormFind(forms.Form):
-    find=forms.CharField(label="Название или специальность", required=False)
+    find=forms.CharField(label="", required=False)
 
 
 class JobFilterFormGr(forms.Form):
     gr_gib=forms.BooleanField(label="Гибкий", required=False)
-    gr_52=forms.BooleanField(label="5/2", required=False)
-    gr_22=forms.BooleanField(label="2/2", required=False)
+    gr_52=forms.BooleanField(label="_5/2", required=False)
+    gr_22=forms.BooleanField(label="_2/2", required=False)
 
 class JobFilterFormZan(forms.Form):
     full=forms.BooleanField(label="Полная", required=False)
-    notfull=forms.BooleanField(label="Неполная", required=False)
+    notfull=forms.BooleanField(label="_Неполная", required=False)
 
 class CommentForm(ModelForm):
     class Meta:
@@ -31,12 +31,12 @@ class CommentForm(ModelForm):
             "name": TextInput(attrs={
                 'class': 'form-control',
                 'placeholder': 'Имя',
-                'style': 'width: 600px;'
+                'style': 'width: 40vw;'
         }),
 
             "body": Textarea(attrs={
                 'class': 'form-control',
                 'placeholder': 'Комментарий',
-                'style': 'height:90px; margin-top:1%;  width: 600px;'
+                'style': 'height:15vh; margin-top:1vw;  width: 40vw;'
             })
         }

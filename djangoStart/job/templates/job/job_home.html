@@ -2,26 +2,33 @@
 
 {% block content %}
 
-<div class='bl12 blocks'>
+<div class="bl_vac_list">
+    <h1>Вакансии</h1>
     <div>
-        <form action="" method="get">
-            {{ form3.as_p }}
-            {{ form.as_p }}
-            {{ form1.as_p }}
-            {{ form2.as_p }}
-            <input type="submit" value="Поиск">
-        </form>
+        <form style="width: 50vw; padding:0; display:flex; justify-content: start; align-items: center; " action="" method="get">
+        <div>
+            <p>Название(специальность)</p>
+            <div style="width: 50%; margin:1vh 2vw 1vh 0vw; font-size: 3vh;">{{ form3.as_p }}</div>
+            <p>Заработная плата</p>
+            <div style="width: 50%; margin:1vh 2vw 1vh 0vw; font-size: 3vh;">{{ form.as_p }}</div>
+            <input class="button_form" type="submit" value="Поиск">
+        </div>
+        <div>
+            <p>График работы</p>
+            <div style="display: inline-flex; margin-bottom: 3vh; font-size: 3vh;">{{ form1.as_p }}</div>
+            <p>Занятость</p>
+            <div style="display: inline-flex;margin-bottom: 3vh; font-size: 3vh;">{{ form2.as_p }}</div>
+        </div>
+    </form>
     </div>
 
-
-<h1>Вакансии</h1>
     {% for el in jobs %}
-<div class="alert alert-warning">
+   <div class="bl12">
     <a href="{% url 'job_detail' el.id %}">
         <h3>{{ el.title}}</h3>
                     <p>{{ el.anons }}</p>
                     </a>
-</div>
+    </div>
     {% endfor %}
 </div>
 {% endblock %}

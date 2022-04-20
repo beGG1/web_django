@@ -3,12 +3,12 @@
 {% block content %}
 
 
-<div class="bl1 blocks">
+<div class="bl1 block_index">
        <h1>Мы рады вас видеть на нашем сервисе!</h1>
        <p>Не опредилились с местом практики или хотите устроиться на стажировку? Здесь вы сможете найти все, что искали!</p>
 </div>
 
-<div class="bl2 blocks">
+<div class="bl2 block_index">
      <h1>Вакансии</h1>
      <p>Зачем лазить по различным сайтам в поисках работы или практики, если теперь все собранно в одном приложении.</p>
       <a href="{% url 'job_home' %}" class="btn1 button">Подробнее</a>
@@ -43,7 +43,7 @@
     {% endfor %}
 </div>
 
-<div class="bl3 blocks">
+<div class="bl3 block_index">
     <h1>About us</h1>
     <p>Каждый человек из нашей команды внес свой вклад в этот проект.</p>
     <a href="{% url 'about' %}" class="btn1 button">Подробнее</a>

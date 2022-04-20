@@ -2,15 +2,14 @@
 
 {% block content %}
 
-<div class='bl12 blocks'>
- 
-        <form action="" method="get">
+<div class='bl_art_list'>
+    <h1 style="margin-bottom: 5vh;">Статьи</h1>
+        <form style="display: inline-flex;" action="" method="get">
             {{ form.as_p }}
-            <input type="submit" value="Поиск">
+            <input type="image" src="/media/article/poisk2.png"  width="25" height="25" alt="" style="background: rgba(255,255,255,0.5); margin: 1%;">
         </form>
-    <h1>Статьи</h1>
     {% for el in news %}
-    <div class="alert alert-warning">
+    <div class="bl11 bl_art_list">
         <a href="{% url 'news_detail' el.id %}">
             <h3>{{ el.title }}</h3>
             <p>{{ el.anons }}</p>

@@ -2,7 +2,7 @@
 
 {% block content %}
 
-    <div class="bl10 blocks">
+    <div class="bl8 block_vac">
        <h1>{{ job.title }}</h1>
        <h2><b>Специализация:</b> {{ job.specialty }}</h2>
        <h3>от <b>{{ job.salary }}</b> руб. до вычета налогов</h3>
@@ -12,11 +12,11 @@
             var a = "{{ job.full_part_time }}";
             if (a=="True")
             {
-                document.write ('<span style="font-size: 25px; color: black; display: block; text-align: left">' + "Полная занятость" + '</span>');
+                document.write ('<span style="font-size: 4vh; color: black; display: block; text-align: left">' + "Полная занятость" + '</span>');
             }
             else
             {
-                document.write ('<span style="font-size: 25px; color: rgb(167, 218, 239); display: block; text-align: center">' + "Неполная занятость" + '</span>');
+                document.write ('<span style="font-size: 4vh; color: black; display: block; text-align: left">' + "Неполная занятость" + '</span>');
             }
        </script>
 
@@ -25,12 +25,11 @@
           <img class="imagejob" src="{{ MEDIA_URL }}{{ job.image.url }}" , width="450">
        </center>
        {% endif %}-->
-       </div>
-       <div class="bl9 blocks">
-           <div style="margin: 3% 19% 5% 10%; font-weight: 500;">{{ job.full_text |safe }}
+    </div>
+    <div class="bl9 block_vac">
+               {{ job.full_text |safe }}
            <h4 style="font-size: 18px;"><i>Вакансия опубликована {{ job.post_date }} в Москве.</i></h4>
-        </div>
-        </div>
+    </div>
 
        
 
@@ -43,7 +42,8 @@
        {% if request.user.is_authenticated %}
        <a href="{% url 'like_j' job.id %}">Like</a>
        <a href="{% url 'unlike_j' job.id %}">UnLike</a>
-           <form class="bl11 blocks" method="post">
+       <div class="bl13 block_vac">    
+       <form  method="post">
               <h3>Добавить комментарии</h3>
               {% csrf_token %}
               <f>{{ form.name }}</f>
@@ -62,7 +62,7 @@
             </div>
         {% endfor %}
     </div>
-
+</div>
 
 {% endblock %}
 
