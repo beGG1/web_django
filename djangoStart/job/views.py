@@ -35,8 +35,7 @@ def like(request, pk):
     print('like')
     job = get_object_or_404(Job, id=pk)
     print(Liked_job(id_user=request.user, id_job=job))
-    if Liked_job(id_user=request.user, id_job=job).count() == 0:
-        print('jopa')
+    if Liked_job.objects.filter(id_user=request.user, id_job=job).count() == 0:
         l = Liked_job(id_user=request.user, id_job=job)
         l.save()
     
