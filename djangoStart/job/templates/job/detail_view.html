@@ -12,11 +12,11 @@
             var a = "{{ job.full_part_time }}";
             if (a=="True")
             {
-                document.write ('<span style="font-size: 4vh; color: black; display: block; text-align: left">' + "Полная занятость" + '</span>');
+                document.write ('<span >' + "Полная занятость" + '</span>');
             }
             else
             {
-                document.write ('<span style="font-size: 4vh; color: black; display: block; text-align: left">' + "Неполная занятость" + '</span>');
+                document.write ('<span>' + "Неполная занятость" + '</span>');
             }
        </script>
 
@@ -28,7 +28,7 @@
     </div>
     <div class="bl9 block_vac">
                {{ job.full_text |safe }}
-           <h4 style="font-size: 18px;"><i>Вакансия опубликована {{ job.post_date }} в Москве.</i></h4>
+           <p><i>Вакансия опубликована {{ job.post_date }} в Москве.</i></p>
     </div>
 
        
@@ -40,8 +40,9 @@
             {% endif %} >
         -->
        {% if request.user.is_authenticated %}
-       <a href="{% url 'like_j' job.id %}">Like</a>
-       <a href="{% url 'unlike_j' job.id %}">UnLike</a>
+       <a style="margin-left: 10vw" href="{% url 'like_j' job.id %}"><input type="image" src="/media/like.png"  width="25vw" height="25vh" alt="" style=" margin: 1%"></a>
+       <a href="{% url 'unlike_j' job.id %}"><input type="image" src="/media/dislike.jpg"  width="25vw" height="25vh" alt="" style=" margin: 1%"></a>
+
        <div class="bl13 block_vac">    
        <form  method="post">
               <h3>Добавить комментарии</h3>
@@ -57,8 +58,8 @@
         {% for comment in comments reversed %}
             <div class="com">
               <b>Пользователь - {{ comment.name }}</b><br>
-              {{ comment.body }} <br>
-              <i>Добавлен - {{ comment.created }}</i><br><br>
+              <p>{{ comment.body }} </p>
+              <i>Добавлен - {{ comment.created }}</i><br>
             </div>
         {% endfor %}
     </div>

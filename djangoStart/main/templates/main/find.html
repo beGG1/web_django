@@ -2,16 +2,13 @@
 
 {% block content %}
 
-<div class='bl_vac_list'>
-
-
+<div class="vac_poisk bl_vac_list">
     <div>
         <form action="" method="get">
             {{ form5.as_p }}
-            <input type="submit" value="Поиск">
+            <input type="submit" value="Поиск" class="button_form">
         </form>
     </div>
-
 
     <h1>Вакансии</h1>
     {% for el in jobs %}
